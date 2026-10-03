@@ -457,4 +457,4 @@ CI (`.github/workflows/ci.yml`) runs lint (ruff), a migrations-up-to-date check,
 
 ---
 
-*Author: Asmit Pandey*
+*Author: Ayush Srivastav*
