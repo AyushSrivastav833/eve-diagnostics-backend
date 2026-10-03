@@ -1,0 +1,26 @@
+[project]
+name = "eve-diagnostics-backend"
+version = "1.0.0"
+description = "Diagnostic test booking service with simulated payments and idempotent webhooks"
+requires-python = ">=3.12"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings"
+python_files = ["test_*.py"]
+addopts = "-ra --strict-markers"
+filterwarnings = [
+    "ignore::DeprecationWarning:celery.*",
+    "ignore:No directory at:UserWarning",  # whitenoise; STATIC_ROOT only exists after collectstatic
+]
+
+[tool.coverage.run]
+source = ["accounts", "bookings", "catalog", "common", "payments"]
+omit = ["*/migrations/*", "*/management/*"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+extend-exclude = ["*/migrations/*"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "DJ"]
